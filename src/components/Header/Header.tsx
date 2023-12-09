@@ -4,12 +4,19 @@ import Image from "next/image";
 import logo from "../../assets/logo.svg";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Loader2, LogIn, Search, Sun, SunMoon, UserRound } from "lucide-react";
+import {
+  Film,
+  Loader2,
+  LogIn,
+  PlusCircle,
+  Search,
+  Sun,
+  SunMoon,
+  UserRound,
+} from "lucide-react";
 import { toast } from "sonner";
-import Modal from "@/components/Modal/Modal";
 import styles from "./Header.module.scss";
 export default function Header() {
-  const [openModal, setOpenModal] = React.useState(false);
   const [user, setUser] = React.useState("");
   const [photo, setPhoto] = React.useState("");
   const [loading, setLoading] = React.useState(true);
@@ -28,7 +35,20 @@ export default function Header() {
   return (
     <>
       <header className={styles.header}>
-        <div>123</div>
+        <div className={styles.right}>
+          <Link href="/collection" className={styles.btn}>
+            <Film size={16} />
+          </Link>
+          {loading ? (
+            <Loader2 size={16} className={styles.loader} />
+          ) : (
+            user && (
+              <Link href="/add" className={styles.btn}>
+                <PlusCircle size={16} />
+              </Link>
+            )
+          )}
+        </div>
         <Link href="/public">
           <Image src={logo} alt="logo" width={30} height={30} priority />
         </Link>
@@ -54,9 +74,9 @@ export default function Header() {
           >
             <SunMoon size={16} />
           </button>
-          <button className={styles.btn} onClick={() => setOpenModal(true)}>
+          <Link href="/search" className={styles.btn}>
             <Search size={16} />
-          </button>
+          </Link>
           {loading ? (
             <Loader2 size={16} className={styles.loader} />
           ) : user ? (
@@ -76,7 +96,6 @@ export default function Header() {
           )}
         </div>
       </header>
-      {openModal && <Modal setOpenModal={setOpenModal} />}
     </>
   );
 }
