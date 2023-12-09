@@ -1,0 +1,19 @@
+:root {
+  --bg: #ffffff;
+  --opposite: #1a1a1c;
+  --gray-bg: #f9f9f9;
+  --gray-border: #d7d7d7;
+  --accent: #007aff;
+  --placeholder: #d7d7d7;
+  --red: red;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1a1a1c;
+  --opposite: #ffffff;
+  --gray-bg: #141414;
+  --gray-border: #020202;
+  --accent: #007aff;
+  --placeholder: #d7d7d7;
+  --red: red;
+}

@@ -1,0 +1,91 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  width: 360px;
+}
+.label {
+  width: 100%;
+  position: relative;
+}
+.input {
+  width: 100%;
+  padding: 5px 10px;
+  background-color: var(--bg);
+  text-align: center;
+  border-bottom: 1px solid var(--gray-border);
+  &:focus {
+    border-bottom: 1px solid var(--opposite);
+  }
+  &::placeholder {
+    color: var(--placeholder);
+  }
+}
+.btn__relative {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  padding: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background-color: var(--bg);
+  &:hover {
+    background-color: var(--gray-border);
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: var(--bg);
+  &:hover {
+    background-color: var(--gray-border);
+  }
+}
+
+.link {
+  color: var(--accent);
+}
+
+.danger {
+  color: var(--red);
+  border-bottom: 1px solid var(--red);
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
