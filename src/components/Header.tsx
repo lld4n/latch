@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import logo from "../assets/logo.svg";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { Search, Sun, SunMoon } from "lucide-react";
-import { toast } from "sonner";
-import Modal from "@/components/Modal";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import logo from '../assets/logo.svg';
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { LogIn, Search, Sun, SunMoon } from 'lucide-react';
+import { toast } from 'sonner';
+import Modal from '@/components/Modal';
 export default function Header() {
   const [openModal, setOpenModal] = React.useState(false);
   const { theme, setTheme } = useTheme();
@@ -17,23 +17,23 @@ export default function Header() {
         <Link href="/">
           <Image src={logo} alt="logo" width={30} height={30} />
         </Link>
-        <div>
+        <div className="flex gap-1">
           <button
             className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-900"
             onClick={() => {
-              let newTheme = "";
-              let messageTheme = "";
-              if (theme === "system") {
-                messageTheme = "темную тему";
-                newTheme = "dark";
-              } else if (theme === "dark") {
-                messageTheme = "светлую тему";
-                newTheme = "light";
+              let newTheme = '';
+              let messageTheme = '';
+              if (theme === 'system') {
+                messageTheme = 'темную тему';
+                newTheme = 'dark';
+              } else if (theme === 'dark') {
+                messageTheme = 'светлую тему';
+                newTheme = 'light';
               } else {
-                messageTheme = "системную тему";
-                newTheme = "system";
+                messageTheme = 'системную тему';
+                newTheme = 'system';
               }
-              toast.info("Цветовая тема изменилась на " + messageTheme);
+              toast.info('Цветовая тема изменилась на ' + messageTheme);
               setTheme(newTheme);
             }}
           >
@@ -45,6 +45,12 @@ export default function Header() {
           >
             <Search size={16} />
           </button>
+          <Link
+            href="/signin"
+            className="p-2 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-900"
+          >
+            <LogIn size={16} />
+          </Link>
         </div>
       </header>
       {openModal && <Modal setOpenModal={setOpenModal} />}
