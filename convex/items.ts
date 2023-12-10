@@ -1,6 +1,15 @@
-import {mutation} from "./_generated/server";
-import {v} from "convex/values";
-import {Id} from "./_generated/dataModel";
+import { mutation, query } from "./_generated/server";
+import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
+
+export const getItem = query({
+  args: {
+    items_id: v.id("items"),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.items_id);
+  },
+});
 
 export const createItem = mutation({
   args: {

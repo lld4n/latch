@@ -67,6 +67,8 @@
   width: 45px;
 }
 
+
+
 .btn {
   display: flex;
   justify-content: center;
@@ -108,4 +110,16 @@
   cursor: pointer;
   background-color: var(--bg);
   opacity: 0.7;
+}
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
