@@ -36,7 +36,7 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <div className={styles.right}>
-          <Link href="/collection" className={styles.btn}>
+          <Link href="/list" className={styles.btn}>
             <Film size={16} />
           </Link>
           {loading ? (
@@ -49,7 +49,7 @@ export default function Header() {
             )
           )}
         </div>
-        <Link href="/public">
+        <Link href="/">
           <Image src={logo} alt="logo" width={30} height={30} priority />
         </Link>
         <div className={styles.right}>
@@ -74,9 +74,6 @@ export default function Header() {
           >
             <SunMoon size={16} />
           </button>
-          <Link href="/search" className={styles.btn}>
-            <Search size={16} />
-          </Link>
           {loading ? (
             <Loader2 size={16} className={styles.loader} />
           ) : user ? (

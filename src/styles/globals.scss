@@ -7,3 +7,10 @@ body {
   background-color: var(--bg);
   color: var(--opposite);
 }
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
