@@ -9,6 +9,9 @@ import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { kinopoiskType } from "@/types/KinopoiskType";
 import { KinopoiskContext } from "@/providers/KinopoiskProvider";
+import { useMutation } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import { Doc } from "../../../../convex/_generated/dataModel";
 
 export default function Add() {
   const [value, setValue] = React.useState("");
@@ -16,8 +19,22 @@ export default function Add() {
   const [danger, setDanger] = React.useState(false);
   const [loadingKinopoisk, setLoadingKinopoisk] = React.useState(false);
   const [kinopoisk, setKinopoisk] = React.useState<kinopoiskType[]>([]);
-
+  const [searchRes, setSearchRes] = React.useState<Doc<"items">[]>([]);
   const kinopoiskContext = React.useContext(KinopoiskContext);
+
+  const search = useMutation(api.items.searchItem);
+
+  React.useEffect(() => {
+    if (value) {
+      search({
+        input: value,
+      }).then((res) => {
+        setSearchRes(res);
+      });
+    } else {
+      setSearchRes([]);
+    }
+  }, [value]);
   const getFromTMDB = async () => {
     setLoadingKinopoisk(true);
     try {
@@ -37,7 +54,6 @@ export default function Add() {
     }
     setLoadingKinopoisk(false);
   };
-  console.log(kinopoisk);
   return (
     <main className={styles.main}>
       <div className={styles.block}>
@@ -68,33 +84,44 @@ export default function Add() {
       )}
 
       <div className={styles.content}>
+        {searchRes.map((el) => {
+          return (
+            <Link href={"/item/" + el._id} key={el._id} className={styles.item}>
+              <img src={el.poster} alt="poster" className={styles.item__img} />
+              <h2>{el.name}</h2>
+              <div>{el.rating.kp}</div>
+            </Link>
+          );
+        })}
         {kinopoisk.length !== 0 && valueKinopoisk === value && (
           <>
             {kinopoisk.map((el, i) => {
-              return (
-                <Link
-                  href="/addFromKinopoisk"
-                  key={i}
-                  className={styles.item}
-                  onClick={() => {
-                    kinopoiskContext?.setValue(el);
-                  }}
-                >
-                  <img
-                    src={el.poster.previewUrl}
-                    alt="poster"
-                    className={styles.item__img}
-                  />
-                  <h2>{el.name}</h2>
-                  <div>{el.rating.kp}</div>
-                  <Image
-                    src={kinopoiskimg}
-                    alt="kinopoisk"
-                    width={20}
-                    height={20}
-                  />
-                </Link>
-              );
+              if (!searchRes.map((e) => e.kp_id).includes(el.id)) {
+                return (
+                  <Link
+                    href="/addFromKinopoisk"
+                    key={i}
+                    className={styles.item}
+                    onClick={() => {
+                      kinopoiskContext?.setValue(el);
+                    }}
+                  >
+                    <img
+                      src={el.poster.previewUrl}
+                      alt="poster"
+                      className={styles.item__img}
+                    />
+                    <h2>{el.name}</h2>
+                    <div>{el.rating.kp}</div>
+                    <Image
+                      src={kinopoiskimg}
+                      alt="kinopoisk"
+                      width={20}
+                      height={20}
+                    />
+                  </Link>
+                );
+              }
             })}
           </>
         )}

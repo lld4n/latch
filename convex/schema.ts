@@ -24,6 +24,8 @@ export default defineSchema({
     movieLength: v.number(),
     year: v.number(),
     description: v.string(),
+  }).searchIndex("search_name", {
+    searchField: "name",
   }),
   grade: defineTable({
     items_id: v.id("items"),

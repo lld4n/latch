@@ -1,6 +1,26 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
-import { Id } from "./_generated/dataModel";
+import { Doc, Id } from "./_generated/dataModel";
+
+export const getAll100 = query({
+  handler: async (ctx): Promise<Doc<"items">[]> => {
+    return await ctx.db.query("items").take(100);
+  },
+});
+
+export const searchItem = mutation({
+  args: {
+    input: v.string(),
+  },
+  handler: async (ctx, args) => {
+    return ctx.db
+      .query("items")
+      .withSearchIndex("search_name", (q) => {
+        return q.search("name", args.input);
+      })
+      .collect();
+  },
+});
 
 export const getItem = query({
   args: {

@@ -1,0 +1,52 @@
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 20px 50px 20px;
+}
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 900px;
+  align-items: flex-start;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 120px;
+  text-align: center;
+  &:hover {
+    background-color: var(--gray-border);
+  }
+  img {
+    width: 100px;
+    border-radius: 5px;
+  }
+}

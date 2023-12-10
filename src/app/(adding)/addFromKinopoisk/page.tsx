@@ -42,10 +42,9 @@ export default function AddFromKinopoisk() {
     }
   }, [kinopoisk]);
 
-  console.log(kinopoisk?.value);
   return (
     <main className={styles.main}>
-      {kinopoisk && kinopoisk.value && idItem ? (
+      {idItem ? (
         <>
           <Item items_id={idItem} />
           {user ? <Estimate items_id={idItem} users_id={user} /> : <></>}
