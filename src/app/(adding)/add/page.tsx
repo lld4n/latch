@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "./add.module.scss";
 import Link from "next/link";
-import _ from "lodash";
 import kinopoiskimg from "../../../assets/kinopoisk_logo.svg";
 import ky from "ky";
 import Image from "next/image";
@@ -63,7 +62,7 @@ export default function Add() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <label>Начните вводить название или имя</label>
+        <label>Начните вводить название</label>
       </div>
       {value &&
         !danger &&

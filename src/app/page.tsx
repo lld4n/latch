@@ -11,7 +11,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1>Специальный проект для Агоны</h1>
         <Link href="/list" className={styles.btn}>
-          Коллекция фильмов
+          Коллекция фильмов/сериалов
           <Film size={16} />
         </Link>
       </main>
