@@ -1,0 +1,42 @@
+.loader {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.grades {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 900px;
+  align-items: flex-start;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 120px;
+  text-align: center;
+  &:hover {
+    background-color: var(--gray-border);
+  }
+  img {
+    width: 100px;
+    border-radius: 5px;
+  }
+}
+
+.rating {
+  font-weight: bold;
+}

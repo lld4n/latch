@@ -208,7 +208,13 @@ export default function Estimate({
               ) : (
                 <button
                   className={styles.btn}
-                  onClick={() => setOpenModal(true)}
+                  onClick={() => {
+                    if (window) {
+                      window.scrollTo(0, 0);
+                      document.body.style.position = "fixed";
+                    }
+                    setOpenModal(true);
+                  }}
                 >
                   <SmilePlus size={16} />
                 </button>
@@ -226,12 +232,16 @@ export default function Estimate({
                       click={(em) => {
                         setEmoji(em.unified);
                         setOpenModal(false);
+                        document.body.style.position = "";
                       }}
                     />
                   </div>
                   <div
                     className={styles.overlay}
-                    onClick={() => setOpenModal(false)}
+                    onClick={() => {
+                      setOpenModal(false);
+                      document.body.style.position = "";
+                    }}
                   />
                 </>
               )}

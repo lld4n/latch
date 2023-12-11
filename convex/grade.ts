@@ -1,6 +1,32 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { Doc } from "./_generated/dataModel";
+import { starsType } from "../src/types/stars";
+
+export const getGradesFromUser = query({
+  args: {
+    users_id: v.id("users"),
+  },
+  handler: async (ctx, args) => {
+    const event = await ctx.db
+      .query("grade")
+      .withIndex("by_users_id", (q) => q.eq("users_id", args.users_id))
+      .collect();
+    const res: {
+      emoji: string | undefined;
+      rating: starsType;
+      item: Doc<"items"> | null;
+    }[] = [];
+    for (let element of event) {
+      res.push({
+        emoji: element.emoji,
+        rating: element.rating,
+        item: await ctx.db.get(element.items_id),
+      });
+    }
+    return res;
+  },
+});
 
 export const getGrade = mutation({
   args: {
