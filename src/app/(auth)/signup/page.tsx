@@ -130,10 +130,20 @@ export default function SignIn() {
           />
           {passwordInput && (
             <button
-              className={styles.btn__relative}
+              className={
+                styles.btn__relative + " " + styles.btn__relative_double
+              }
               onClick={() => setPasswordShow(!passwordShow)}
             >
               {passwordShow ? <EyeOff size={12} /> : <Eye size={12} />}
+            </button>
+          )}
+          {passwordInput && (
+            <button
+              className={styles.btn__relative}
+              onClick={() => setPasswordInput("")}
+            >
+              <X size={12} />
             </button>
           )}
         </label>
@@ -148,10 +158,20 @@ export default function SignIn() {
           />
           {passwordInput2 && (
             <button
-              className={styles.btn__relative}
+              className={
+                styles.btn__relative + " " + styles.btn__relative_double
+              }
               onClick={() => setPasswordShow2(!passwordShow2)}
             >
               {passwordShow2 ? <EyeOff size={12} /> : <Eye size={12} />}
+            </button>
+          )}
+          {passwordInput2 && (
+            <button
+              className={styles.btn__relative}
+              onClick={() => setPasswordInput2("")}
+            >
+              <X size={12} />
             </button>
           )}
         </label>

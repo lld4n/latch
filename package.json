@@ -19,8 +19,7 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-dropzone": "^14.2.3",
-    "sonner": "^1.2.4"
+    "react-dropzone": "^14.2.3"
   },
   "devDependencies": {
     "@types/md5": "^2.3.5",

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { Toaster } from "sonner";
 import ConvexClientProvider from "@/providers/ConvexClientProvider";
 import KinopoiskProvider from "@/providers/KinopoiskProvider";
 import React from "react";
@@ -21,7 +20,6 @@ export default function RootLayout({
         <ThemeProvider>
           <ConvexClientProvider>
             <KinopoiskProvider>
-              <Toaster position="bottom-center" closeButton />
               <div className="wrapper">{children}</div>
             </KinopoiskProvider>
           </ConvexClientProvider>

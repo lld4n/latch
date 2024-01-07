@@ -11,7 +11,6 @@ export default function GradeProfile({ user }: { user: Id<"users"> }) {
   const grades = useQuery(api.grade.getGradesFromUser, {
     users_id: user,
   });
-  console.log(grades);
   return (
     <>
       {grades ? (

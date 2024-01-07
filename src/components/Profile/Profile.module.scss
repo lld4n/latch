@@ -25,3 +25,16 @@
     transform: rotate(360deg);
   }
 }
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  gap: 3px;
+  padding: 5px;
+  background-color: var(--gray-bg);
+  &:hover {
+    background-color: var(--gray-border);
+  }
+}

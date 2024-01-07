@@ -7,7 +7,6 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 export default function List() {
   const list = useQuery(api.items.getAll100);
-  console.log(list);
   return (
     <main className={styles.main}>
       {list ? (

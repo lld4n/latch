@@ -28,7 +28,6 @@ export default function SignIn() {
       if (user.length === 1) {
         if (user[0].password_hash === password_hash) {
           localStorage.setItem("latch-user", user[0]._id);
-          localStorage.setItem("latch-photo", user[0].photo || "");
           router.push("/");
         } else {
           setDanger(true);
@@ -87,10 +86,20 @@ export default function SignIn() {
           />
           {passwordInput && (
             <button
-              className={styles.btn__relative}
+              className={
+                styles.btn__relative + " " + styles.btn__relative_double
+              }
               onClick={() => setPasswordShow(!passwordShow)}
             >
               {passwordShow ? <EyeOff size={12} /> : <Eye size={12} />}
+            </button>
+          )}
+          {passwordInput && (
+            <button
+              className={styles.btn__relative}
+              onClick={() => setPasswordInput("")}
+            >
+              <X size={12} />
             </button>
           )}
         </label>

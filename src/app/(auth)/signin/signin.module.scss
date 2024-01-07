@@ -44,6 +44,10 @@
     background-color: var(--gray-border);
   }
 }
+.btn__relative_double {
+  right: auto;
+  left: 10px;
+}
 
 .btn {
   display: flex;

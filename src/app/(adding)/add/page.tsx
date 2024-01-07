@@ -48,7 +48,6 @@ export default function Add() {
       setValueKinopoisk(value);
       setKinopoisk(((await data.json()) as any).docs);
     } catch (e) {
-      console.log(e);
       setDanger(true);
     }
     setLoadingKinopoisk(false);
