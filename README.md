@@ -1,8 +1,7 @@
 <h1 align="center">Оценка фильмов/сериалов</h1>
 
 <div align="center">
-<img src="https://i.ibb.co/RThjjL5/latch.png
-"/><br>
+<img src="https://i.ibb.co/RThjjL5/latch.png"/><br>
 <a href="https://latch.lldan.ru">latch.lldan.ru</a>
 </div>
 <br>
