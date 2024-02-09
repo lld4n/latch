@@ -7,6 +7,10 @@
 <br>
 <p align="center">Первый проект, где использовался Convex. Также использовалось неофициальное апи кинопоиска</p>
 
+
+https://github.com/lld4n/latch/assets/70964369/05dc12de-2189-47f1-9ede-fbd51b0d4745
+
+
 <h3 align="center">технологии</h3>
 
 <div align="center">
